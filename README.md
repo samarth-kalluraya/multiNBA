@@ -1,16 +1,19 @@
 # multiNBA
 
-Suppose the task is given in our usual nomenclature:
+The task is defined using following nomenclature:
 
 ```python
 '''
 subformula={ AP_id: [a,b,c]}
 a: condition for AP_id to be True
+   eg: '(l1_1)'    #robot 1 goes to landmark 1
+       '(m1_1)'    #robot 1 grabs object 1  
+       '(m1r3_1)'  #robot 1 moves object 1 to landmark/region 3      
 b: desired probability
 c: distance from landmark
 '''
 
-self.formula = '<>e1 && <> (e2 || e3)'
+self.formula = '<>e1 && <> (e2 || e3)' #eventually e1 should be achieved and eventually e2 or e3 should be achieved
 self.subformula = {1: ['(l4_2)',0.8,1.5],
                     2: ['(l8_1)',0.8,3], 
                     3: ['(l12_1)',0.8,5]
