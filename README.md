@@ -4,15 +4,10 @@ Suppose the task is given in our usual nomenclature:
 
 ```python
 '''
-
 subformula={ AP_id: [a,b,c]}
-
 a: condition for AP_id to be True
-
 b: desired probability
-
 c: distance from landmark
-
 '''
 
 self.formula = '<>e1 && <> (e2 || e3)'
