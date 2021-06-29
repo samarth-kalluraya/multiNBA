@@ -36,14 +36,17 @@ buchi.buchi_graph.edges['T0_init', 'accept_all']=
 'counter': 0, 
 'avoid_self_loop': {0: [], 1: []}} 
 ```
-Thus, currently, to enable the transition robot 2 must go to landmark 4 and robot 1 must go to landmark 8. The counter is 0 which means it pointing to first of the two possible truths (all_truth). 
+```'truth'``` key refers to one of the possible truth values that need to be fulfilled to enable the transition.
+```'all_truth'``` key stores all possible alternate truth combinations that can enable the transition.
+
+Thus, in the above exmaple, to enable the transition robot 2 must go to landmark 4 and robot 1 must go to landmark 8. The counter is 0 which means it pointing to first of the two possible truths (in 'all_truth'). 
 
 When the user determines that this particular transition is not possible he can call any of the three functions to change the truth that enables the transition:
-1)  ```python buchi.update_alternate_transition('T0_init', 'accept_all')```
+1)  ```buchi.update_alternate_transition('T0_init', 'accept_all')```
         This will automatically increment the counter and the 'truth' will store the next possible truth. The function will return true if it successfully finds an alternate truth. Will return False if there are no more alternate truths available.
-2) ```python buchi.previous_alternate_transition('T0_init', 'accept_all')```
+2) ```buchi.previous_alternate_transition('T0_init', 'accept_all')```
         This will automatically decrement the counter and the 'truth' will store the next previous truth. The function will return true if it successfully finds an alternate truth. Will return False if there are no more alternate truths available.
-3) ```python buchi.ctr_alternate_transition('T0_init', 'accept_all', counter)```
+3) ```buchi.ctr_alternate_transition('T0_init', 'accept_all', counter)```
         This will automatically set the counter and the 'truth' as per the counter value specified. The function will return true if a valid counter value is provided.
 
 In case none of the transitions are possible then the user can call "buchi.delete_transition('T0_init', 'accept_all')" function to delete that particular edge in the graph. 
