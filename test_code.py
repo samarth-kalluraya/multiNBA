@@ -45,6 +45,7 @@ if __name__ == "__main__":
     flagFeasible = 1
     
     currentNBAState = "T0_init"
+    #currentNBAState = buchi.buchi_graph.graph['init'][0]
     acceptingNBAState = buchi.buchi_graph.graph['accept'][0]
     
     nextNBAState = buchi.get_next_NBA_state(currentNBAState, acceptingNBAState)
