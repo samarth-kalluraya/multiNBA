@@ -53,18 +53,22 @@ if __name__ == "__main__":
     print("\ncurrentNBAState: ",currentNBAState)
     print("nextNBAState: ",nextNBAState)
     print("nextAction: ",nextAction)
-    #Suppose above action cannot be taken. We will select the alternative action
     
-    buchi.update_alternate_transition(currentNBAState, nextNBAState) # update alternate action 
+    
+    #Suppose above action cannot be taken i.e. if we get flagFeasible=0. We will select the alternative action
+    flagAlternate = buchi.update_alternate_transition(currentNBAState, nextNBAState) # update alternate action 
     nextAction = buchi.get_next_action(currentNBAState, nextNBAState)
-    print("\nAction is updated in scenario that above action is infeasible")
-    print("currentNBAState: ",currentNBAState)
+    print("\nAfter updating action... \ncurrentNBAState: ",currentNBAState)
     print("nextNBAState: ",nextNBAState)
     print("nextAction: ",nextAction)
     
     
-    # Suppose both actions are not possible and thus we delete this edge in the NBA
-    buchi.delete_transition(currentNBAState, acceptingNBAState)
+    # Suppose the action is again infeasible, i.e. flafFeasible = 0
+    flagAlternate = buchi.update_alternate_transition(currentNBAState, nextNBAState)
+    # flagAlternate will be False as both actions are not possible and thus we delete this edge in the NBA
+    buchi.delete_transition(currentNBAState, nextNBAState)
+    
+    
     
     nextNBAState = buchi.get_next_NBA_state(currentNBAState, acceptingNBAState)
     nextAction = buchi.get_next_action(currentNBAState, nextNBAState)
