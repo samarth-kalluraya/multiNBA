@@ -53,7 +53,9 @@ In case none of the transitions are possible then the user can call "buchi.delet
 Note:  line 98 in the buchi_parse code uses the distance mentioned in the task subformula. Thus if a different nomenclature is used for the task subformula, changes will be need to made in line 98 so that it points to the distance.
 
 Additional helper functions are:
+
 ``` buchi.get_next_NBA_state(currentNBAState, acceptingNBAState)```
       This will return the next NBA state on the shortest path of the graph from current state to accepting final state.
+      
 ``` buchi.get_next_action(currentNBAState, nextNBAState)```
       Returns dict indicating which tasks/actions need to be satisfied to enable transition from current NBA state to desired next NBA state
