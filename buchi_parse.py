@@ -318,3 +318,21 @@ class Buchi(object):
         final_state = self.buchi_graph.graph['accept'][0]
         if self.min_length[state,final_state] == np.inf:
             raise Exception("No more transitions to accepting state")
+            
+    def get_next_NBA_state(self, curr_state, accepting_state):
+        """
+        returns next state closest to accepting/final state.
+        :param curr_state: current state in graph
+        :param accepting_state: current state in graph
+        :return: next_State : state closest to accepting/final state
+        """
+        return nx.shortest_path(self.buchi_graph,curr_state,accepting_state)[1]
+    
+    def get_next_action(self, curr_state, accepting_state):
+        """
+        returns the truth value or action that enables the transition between states.
+        :param curr_state: current state in graph
+        :param accepting_state: current state in graph
+        :return: next_State : target state
+        """
+        return self.buchi_graph.edges[curr_state, accepting_state]['truth']
